@@ -1,20 +1,27 @@
 "use client"
 
-import { Building2, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Linkedin, Youtube } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from "lucide-react"
 import { useI18n } from "@/i18n/provider"
 import { SITE_CONFIG, getTelLink, getWhatsAppLink, AL_AIN_AREAS, PROPERTY_CATEGORIES } from "@/lib/site-config"
+
+// TikTok SVG icon (not in lucide-react)
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
+    </svg>
+  )
+}
 
 export function SiteFooter() {
   const { t, locale } = useI18n()
   const year = new Date().getFullYear()
 
   const socials = [
-    { icon: Facebook, url: SITE_CONFIG.social.facebook },
-    { icon: Instagram, url: SITE_CONFIG.social.instagram },
-    { icon: Twitter, url: SITE_CONFIG.social.twitter },
-    { icon: Linkedin, url: SITE_CONFIG.social.linkedin },
-    { icon: Youtube, url: SITE_CONFIG.social.youtube },
-  ]
+    { icon: Facebook, url: SITE_CONFIG.social.facebook, label: "Facebook" },
+    { icon: Instagram, url: SITE_CONFIG.social.instagram, label: "Instagram" },
+    { icon: TikTokIcon, url: SITE_CONFIG.social.tiktok, label: "TikTok" },
+  ].filter(s => s.url) // Only show socials that have URLs
 
   return (
     <footer className="bg-[#0a0f1e] text-white mt-auto">
@@ -48,7 +55,7 @@ export function SiteFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-[#c9a84c] hover:text-[#0a0f1e] transition-colors"
-                  aria-label="Social link"
+                  aria-label={`${s.label} — Abraj Trwada`}
                 >
                   <s.icon className="h-4 w-4" />
                 </a>
@@ -129,12 +136,17 @@ export function SiteFooter() {
           </p>
           <div className="flex flex-col md:flex-row items-center gap-3">
             <a
-              href="https://phronesis-studio.com/en"
+              href={SITE_CONFIG.phronesisUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs text-white/60 hover:text-[#c9a84c] transition-colors group"
+              className="flex items-center gap-2 text-xs text-white/60 hover:text-[#c9a84c] transition-colors group"
+              title="Phronesis Studio — Studio of Practical Wisdom"
             >
-              <span className="font-serif italic text-[#c9a84c] text-base leading-none">Φ</span>
+              <img
+                src={SITE_CONFIG.phronesisLogoPath}
+                alt="Phronesis Studio"
+                className="h-6 w-6 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+              />
               <span>
                 {locale === "ar"
                   ? "تم تصميم وتطوير هذا الموقع بواسطة Phronesis Studio"

@@ -4,11 +4,11 @@
 export const SITE_CONFIG = {
   brandName: {
     en: "Abraj Trwada Real Estate",
-    ar: "أبراج ترادا العقارية",
+    ar: "أبراج طروادة العقارية",
   },
   brandFullName: {
     en: "Abraj Trwada Real Estate - L.L.C.",
-    ar: "أبراج ترادا العقارية والاستثمارية ذ.م.م",
+    ar: "أبراج طروادة العقارية والاستثمارية ذ.م.م",
   },
   // Phone & WhatsApp (UAE format) — primary number
   phone: "+971504870520",
@@ -61,12 +61,17 @@ export const SITE_CONFIG = {
   // Logo path (in /public folder)
   logoPath: "/abraj-trwada-logo.png",
 
+  // Phronesis Studio credit logo + URL
+  phronesisLogoPath: "/phronesis-logo.png",
+  phronesisUrl: "https://phronesis-studio.com/en",
+
   social: {
-    facebook: "https://facebook.com",
-    instagram: "https://instagram.com",
-    twitter: "https://twitter.com",
-    linkedin: "https://linkedin.com",
-    youtube: "https://youtube.com",
+    facebook: "https://www.facebook.com/abrajtrwada1/",
+    instagram: "https://www.instagram.com/abrajtrwada/",
+    tiktok: "https://www.tiktok.com/@abraj_trwada",
+    twitter: "",
+    linkedin: "",
+    youtube: "",
   },
 } as const
 
@@ -74,6 +79,7 @@ export const SITE_CONFIG = {
 export const PROPERTY_TYPES = [
   { value: "villa", labelEn: "Villa", labelAr: "فيلا", icon: "🏡" },
   { value: "apartment", labelEn: "Apartment", labelAr: "شقة", icon: "🏢" },
+  { value: "building", labelEn: "Building (Residential)", labelAr: "مبنى سكني", icon: "🏗️" },
   { value: "shop", labelEn: "Shop", labelAr: "محل", icon: "🏪" },
   { value: "office", labelEn: "Office", labelAr: "مكتب", icon: "🏬" },
   { value: "warehouse", labelEn: "Warehouse", labelAr: "مستودع", icon: "🏭" },
@@ -106,6 +112,8 @@ export const PROPERTY_CATEGORIES = [
   { value: "villas-sale", type: "villa", listingType: "sale", labelEn: "Villas for Sale", labelAr: "فلل للبيع", icon: "🏡" },
   { value: "apartments-rent", type: "apartment", listingType: "rent", labelEn: "Apartments for Rent", labelAr: "شقق للإيجار", icon: "🏢" },
   { value: "apartments-sale", type: "apartment", listingType: "sale", labelEn: "Apartments for Sale", labelAr: "شقق للبيع", icon: "🏢" },
+  { value: "buildings-rent", type: "building", listingType: "rent", labelEn: "Residential Buildings for Rent", labelAr: "مباني سكنية للإيجار", icon: "🏗️" },
+  { value: "buildings-sale", type: "building", listingType: "sale", labelEn: "Residential Buildings for Sale", labelAr: "مباني سكنية للبيع", icon: "🏗️" },
   { value: "shops", type: "shop", listingType: "rent", labelEn: "Shops", labelAr: "محلات", icon: "🏪" },
   { value: "offices", type: "office", listingType: "rent", labelEn: "Offices", labelAr: "مكاتب", icon: "🏬" },
   { value: "warehouses", type: "warehouse", listingType: "rent", labelEn: "Warehouses", labelAr: "مستودعات", icon: "🏭" },

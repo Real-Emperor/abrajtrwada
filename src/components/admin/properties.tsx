@@ -262,10 +262,6 @@ export function AdminProperties() {
                   <Label>{t("admin.property.bathrooms")}</Label>
                   <Input type="number" value={editing.bathrooms} onChange={e => setEditing({ ...editing, bathrooms: e.target.value })} className="mt-1" dir="ltr" />
                 </div>
-                <div>
-                  <Label>{t("admin.property.sizeSqft")}</Label>
-                  <Input type="number" value={editing.sizeSqft} onChange={e => setEditing({ ...editing, sizeSqft: e.target.value })} className="mt-1" dir="ltr" />
-                </div>
               </div>
               <div>
                 <Label>{t("admin.property.addressEn")}</Label>

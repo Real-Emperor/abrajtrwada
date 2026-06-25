@@ -81,6 +81,12 @@ const PHOTO_POOL = {
     "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80", // modern apartment kitchen
     "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80", // apartment bathroom
   ],
+  building: [
+    "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80", // modern residential building
+    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80", // apartment tower
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80", // residential complex
+    "https://images.unsplash.com/photo-1460317442991-0ec209397cb4?w=1200&q=80", // multi-story building
+  ],
   shop: [
     "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=1200&q=80", // retail shop front
     "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80", // shop interior
@@ -289,6 +295,53 @@ const SEED_PROPERTIES = [
     price: 850000, bedrooms: 2, bathrooms: 2, sizeSqft: 1100,
     furnished: false, photos: pickPhotos("apartment", 3),
     features: JSON.stringify(["Tenanted", "Investment Property", "Balcony", "Dedicated Parking", "Strong ROI"]),
+    status: "active", featured: false,
+  },
+
+  // ─── Residential Buildings ───
+  {
+    slug: "8-unit-residential-building-al-jimi",
+    titleEn: "8-Unit Residential Building for Rent in Al Jimi",
+    titleAr: "مبنى سكني بـ 8 شقق للإيجار في الجيمي",
+    descriptionEn: "Well-maintained residential building in Al Jimi comprising 8 apartments (mix of 1 and 2-bedroom units). Excellent investment opportunity with steady rental income. Building features covered parking, 24/7 security, central AC, and rooftop terrace. Close to Al Jimi Mall and major amenities.",
+    descriptionAr: "مبنى سكني بحالة جيدة في الجيمي يضم 8 شقق (مزيج من غرفة وغرفتي نوم). فرصة استثمارية ممتازة مع دخل إيجاري ثابت. يتميز المبنى بمواقف سيارات مغطاة، أمن على مدار الساعة، تكييف مركزي، وتراس على السطح. قريب من مول الجيمي والمرافق الرئيسية.",
+    type: "building", listingType: "rent", area: "al-jimi",
+    addressEn: "Street 12, Al Jimi, Al Ain",
+    addressAr: "الشارع 12، الجيمي، العين",
+    latitude: 24.2275, longitude: 55.7447,
+    price: 680000, bedrooms: 0, bathrooms: 0, sizeSqft: 12000,
+    furnished: false, photos: pickPhotos("building", 4),
+    features: JSON.stringify(["8 Apartments", "Covered Parking", "24/7 Security", "Central AC", "Rooftop Terrace", "Investment Opportunity", "Near Mall"]),
+    status: "active", featured: true,
+  },
+  {
+    slug: "12-unit-residential-building-sale-al-hili",
+    titleEn: "12-Unit Residential Building for Sale in Al Hili",
+    titleAr: "مبنى سكني بـ 12 شقة للبيع في الهيلي",
+    descriptionEn: "Premium 12-unit residential building for sale in the prestigious Al Hili area. Mix of 1, 2, and 3-bedroom apartments. Building fully occupied with strong rental yield. Features modern architecture, elevator, covered parking, and prime location near Al Hili Gardens.",
+    descriptionAr: "مبنى سكني مميز بـ 12 شقة للبيع في منطقة الهيلي الراقية. مزيج من شقق بغرفة وغرفتي و3 غرف نوم. المبنى مشغول بالكامل بعائد إيجاري قوي. يتميز بتصميم معماري عصري، مصعد، مواقف سيارات مغطاة، وموقع مميز بالقرب من حدائق الهيلي.",
+    type: "building", listingType: "sale", area: "al-hili",
+    addressEn: "Near Al Hili Gardens, Al Ain",
+    addressAr: "بالقرب من حدائق الهيلي، العين",
+    latitude: 24.2875, longitude: 55.7847,
+    price: 8500000, bedrooms: 0, bathrooms: 0, sizeSqft: 18000,
+    furnished: false, photos: pickPhotos("building", 4),
+    features: JSON.stringify(["12 Apartments", "Elevator", "Covered Parking", "Fully Occupied", "Strong Rental Yield", "Modern Architecture", "Prime Location"]),
+    status: "active", featured: true,
+  },
+  {
+    slug: "6-unit-residential-building-rent-al-mutaredh",
+    titleEn: "6-Unit Residential Building for Rent in Al Mutaredh",
+    titleAr: "مبنى سكني بـ 6 شقق للإيجار في المترع",
+    descriptionEn: "Compact residential building in Al Mutaredh with 6 well-appointed apartments. Each unit features modern kitchen, built-in wardrobes, and balcony. Building includes shared laundry room, covered parking, and security. Great for investors seeking steady income.",
+    descriptionAr: "مبنى سكني مدمج في المترع بـ 6 شقق مجهزة جيداً. كل وحدة تتميز بمطبخ عصري، خزائن مدمجة، وشرفة. يضم المبنى غرفة غسيل مشتركة، مواقف سيارات مغطاة، وأمن. ممتاز للمستثمرين الذين يبحثون عن دخل ثابت.",
+    type: "building", listingType: "rent", area: "al-mutaredh",
+    addressEn: "Street 5, Al Mutaredh, Al Ain",
+    addressAr: "الشارع 5، المترع، العين",
+    latitude: 24.2375, longitude: 55.7347,
+    price: 420000, bedrooms: 0, bathrooms: 0, sizeSqft: 8000,
+    furnished: false, photos: pickPhotos("building", 3),
+    features: JSON.stringify(["6 Apartments", "Modern Kitchens", "Built-in Wardrobes", "Shared Laundry", "Covered Parking", "Security", "Steady Income"]),
     status: "active", featured: false,
   },
 

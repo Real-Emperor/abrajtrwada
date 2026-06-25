@@ -168,6 +168,8 @@ export const en = {
     villasSale: "Villas for Sale",
     apartmentsRent: "Apartments for Rent",
     apartmentsSale: "Apartments for Sale",
+    buildingsRent: "Residential Buildings for Rent",
+    buildingsSale: "Residential Buildings for Sale",
     shops: "Shops",
     offices: "Offices",
     warehouses: "Warehouses",
@@ -208,9 +210,9 @@ export const en = {
     title: "About Abraj Trwada Real Estate",
     subtitle: "Your trusted real estate partner in Al Ain, UAE",
     storyTitle: "Our Story",
-    storyContent: "Abraj Trwada Real Estate was founded with a simple mission: to make property hunting in Al Ain effortless, transparent, and rewarding. As a locally-rooted agency, we know every neighborhood, every street, and every hidden gem in Al Ain. Whether you're looking for a family villa in Al Jimi, a modern apartment in Al Hili, or a commercial space in the city center, we're here to guide you every step of the way.",
+    storyContent: "Abraj Trwada Real Estate - L.L.C. is a UAE-based real estate company headquartered in Al Ain, Abu Dhabi. Founded with a commitment to transparent, professional, and personalized service, we have built our reputation on three core pillars: property rental and management, real estate brokerage for buying and selling, and investment in property development projects. Our team brings deep local expertise across every neighborhood of Al Ain, and we pride ourselves on connecting families, investors, and businesses with properties that match their needs and aspirations. From our office on Main Street, Al Masa Building, we serve clients across the entire Al Ain region and beyond.",
     missionTitle: "Our Mission",
-    missionContent: "To connect people with properties that match their lifestyle, budget, and aspirations — backed by honest advice, deep market knowledge, and personalized service.",
+    missionContent: "To deliver exceptional real estate services across three pillars — property rental & management, brokerage for buying & selling, and investment & project development — with transparency, expertise, and a commitment to long-term client relationships.",
     whyChooseUs: "Why Choose Us",
     features: {
       localExpertise: {
