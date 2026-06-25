@@ -12,12 +12,9 @@ export function DemoDisclaimerPopup() {
   const [open, setOpen] = useState(false)
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
-  // Show popup on first visit (check localStorage)
+  // Show popup on every visit (every page load/refresh)
   useEffect(() => {
-    const agreed = localStorage.getItem("demo-disclaimer-agreed")
-    if (!agreed) {
-      setOpen(true)
-    }
+    setOpen(true)
   }, [])
 
   // Countdown timer
@@ -45,7 +42,6 @@ export function DemoDisclaimerPopup() {
   }, [])
 
   const handleAgree = () => {
-    localStorage.setItem("demo-disclaimer-agreed", "true")
     setOpen(false)
   }
 
