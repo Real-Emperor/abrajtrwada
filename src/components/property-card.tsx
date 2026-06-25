@@ -1,6 +1,6 @@
 "use client"
 
-import { Bed, Bath, MapPin, Heart, GitCompare, Eye } from "lucide-react"
+import { Bed, Bath, MapPin, Heart, GitCompare, Eye, Building, Maximize } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -177,16 +177,32 @@ export function PropertyCard({ property, onClick }: { property: PropertyCardData
 
         {/* Specs */}
         <div className="grid grid-cols-2 gap-2 text-xs mb-3 py-2 border-y border-border">
-          <div className="flex items-center gap-1">
-            <Bed className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
-            <span className="font-medium">{property.bedrooms}</span>
-            <span className="text-muted-foreground hidden sm:inline">{t("property.bedrooms")}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Bath className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
-            <span className="font-medium">{property.bathrooms}</span>
-            <span className="text-muted-foreground hidden sm:inline">{t("property.bathrooms")}</span>
-          </div>
+          {property.type === "building" ? (
+            <div className="flex items-center gap-1">
+              <Building className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
+              <span className="font-medium">{property.bedrooms}</span>
+              <span className="text-muted-foreground hidden sm:inline">{locale === "ar" ? "وحدات" : "Units"}</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1">
+              <Bed className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
+              <span className="font-medium">{property.bedrooms}</span>
+              <span className="text-muted-foreground hidden sm:inline">{t("property.bedrooms")}</span>
+            </div>
+          )}
+          {property.type === "building" ? (
+            <div className="flex items-center gap-1">
+              <Maximize className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
+              <span className="font-medium">{property.bathrooms}</span>
+              <span className="text-muted-foreground hidden sm:inline">{locale === "ar" ? "حمامات" : "Baths"}</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1">
+              <Bath className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
+              <span className="font-medium">{property.bathrooms}</span>
+              <span className="text-muted-foreground hidden sm:inline">{t("property.bathrooms")}</span>
+            </div>
+          )}
         </div>
 
         {/* Price + CTA */}

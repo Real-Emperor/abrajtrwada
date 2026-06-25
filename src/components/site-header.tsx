@@ -66,10 +66,10 @@ export function SiteHeader() {
               />
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="text-base md:text-lg font-bold text-foreground">
+              <span className="text-sm md:text-base font-bold text-foreground whitespace-nowrap">
                 {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}
               </span>
-              <span className="text-[9px] md:text-[11px] text-muted-foreground hidden sm:block">
+              <span className="text-[8px] md:text-[10px] text-muted-foreground hidden sm:block whitespace-nowrap">
                 {t("common.brandTagline")}
               </span>
             </div>
