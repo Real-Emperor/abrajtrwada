@@ -59,7 +59,7 @@ export const SITE_CONFIG = {
   },
 
   // Logo path (in /public folder)
-  logoPath: "/abraj-trwada-logo.jpg",
+  logoPath: "/abraj-trwada-logo.png",
 
   social: {
     facebook: "https://facebook.com",
