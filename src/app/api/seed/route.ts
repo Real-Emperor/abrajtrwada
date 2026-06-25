@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
         data: {
           email: adminEmail,
           passwordHash,
-          name: "Mohammad Mosaa Ali",
+          name: "Abraj Trwada Admin",
           phone: "+971504870520",
         },
       })
