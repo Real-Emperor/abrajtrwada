@@ -75,9 +75,11 @@ export default function AdminPage() {
       <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
         <Card className="max-w-md w-full p-8">
           <div className="flex flex-col items-center mb-6">
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#c9a84c] to-[#1e3a8a] text-white mb-3">
-              <Building2 className="h-8 w-8" />
-            </div>
+            <img
+              src={SITE_CONFIG.logoPath}
+              alt="Abraj Trwada Real Estate Logo"
+              className="h-16 w-16 rounded-xl object-cover ring-2 ring-[#c9a84c]/30 mb-3"
+            />
             <h1 className="text-2xl font-bold">{t("admin.login.title")}</h1>
             <p className="text-sm text-muted-foreground mt-1">{t("admin.login.subtitle")}</p>
           </div>
@@ -118,8 +120,8 @@ export default function AdminPage() {
           </div>
           <div className="mt-4 p-3 rounded-lg bg-muted/50 text-xs text-muted-foreground">
             <p className="font-semibold mb-1">{locale === "ar" ? "بيانات الدخول:" : "Admin credentials:"}</p>
-            <p dir="ltr">Email: manager.mosa@alainproperties.ae</p>
-            <p dir="ltr">Password: AlAin@Prop_2026!Secure</p>
+            <p dir="ltr">Email: admin@abrajtrwada.ae</p>
+            <p dir="ltr">Password: AbrajTrwada@Admin2026!</p>
             <p className="mt-1 italic">
               {locale === "ar"
                 ? "(تم تدوير بيانات الدخول — تواصل معنا إذا نسيتها)"
@@ -144,9 +146,11 @@ export default function AdminPage() {
       {/* Sidebar */}
       <aside className="lg:w-64 bg-[#0a0f1e] text-white lg:min-h-screen p-4 lg:p-6">
         <div className="flex items-center gap-2 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#c9a84c] to-[#1e3a8a]">
-            <Building2 className="h-6 w-6 text-white" />
-          </div>
+          <img
+            src={SITE_CONFIG.logoPath}
+            alt="Abraj Trwada Real Estate Logo"
+            className="h-10 w-10 rounded-lg object-cover ring-2 ring-[#c9a84c]/30"
+          />
           <div>
             <div className="text-sm font-bold">
               {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}

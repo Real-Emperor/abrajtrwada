@@ -64,7 +64,7 @@ export default function HomePage() {
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#c9a84c] mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading Al Ain Properties...</p>
+          <p className="text-muted-foreground">Loading Abraj Trwada Real Estate...</p>
         </div>
       </div>
     )

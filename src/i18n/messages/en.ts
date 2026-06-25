@@ -1,8 +1,8 @@
-// English translations for Al Ain Properties
+// English translations for Abraj Trwada Real Estate
 export const en = {
   common: {
-    brandName: "Al Ain Properties",
-    brandTagline: "Premium Real Estate in Al Ain",
+    brandName: "Abraj Trwada Real Estate",
+    brandTagline: "Real Estate & Investment — Al Ain, UAE",
     nav: {
       home: "Home",
       search: "Search",
@@ -43,7 +43,7 @@ export const en = {
   },
   home: {
     heroTitle: "Find Your Dream Property in Al Ain",
-    heroSubtitle: "Discover premium villas, apartments, shops, offices, and land in Al Ain, UAE",
+    heroSubtitle: "Discover premium villas, apartments, shops, offices, and land with Abraj Trwada Real Estate — your trusted partner in Al Ain, UAE",
     heroCta: "Start Your Search",
     heroSecondaryCta: "Browse Properties",
     searchTitle: "Advanced Property Search",
@@ -54,7 +54,7 @@ export const en = {
     latestSubtitle: "Newly added properties to the market",
     popularAreas: "Popular Areas in Al Ain",
     popularAreasSubtitle: "Explore properties in your preferred neighborhood",
-    aboutTitle: "About Al Ain Properties",
+    aboutTitle: "About Abraj Trwada Real Estate",
     aboutSubtitle: "Your trusted real estate partner in Al Ain",
     testimonialsTitle: "What Our Clients Say",
     testimonialsSubtitle: "Real stories from satisfied property owners and tenants",
@@ -205,10 +205,10 @@ export const en = {
     minRead: "min read",
   },
   about: {
-    title: "About Al Ain Properties",
+    title: "About Abraj Trwada Real Estate",
     subtitle: "Your trusted real estate partner in Al Ain, UAE",
     storyTitle: "Our Story",
-    storyContent: "Al Ain Properties was founded with a simple mission: to make property hunting in Al Ain effortless, transparent, and rewarding. As a locally-rooted agency, we know every neighborhood, every street, and every hidden gem in Al Ain. Whether you're looking for a family villa in Al Jimi, a modern apartment in Al Hili, or a commercial space in the city center, we're here to guide you every step of the way.",
+    storyContent: "Abraj Trwada Real Estate was founded with a simple mission: to make property hunting in Al Ain effortless, transparent, and rewarding. As a locally-rooted agency, we know every neighborhood, every street, and every hidden gem in Al Ain. Whether you're looking for a family villa in Al Jimi, a modern apartment in Al Hili, or a commercial space in the city center, we're here to guide you every step of the way.",
     missionTitle: "Our Mission",
     missionContent: "To connect people with properties that match their lifestyle, budget, and aspirations — backed by honest advice, deep market knowledge, and personalized service.",
     whyChooseUs: "Why Choose Us",
@@ -246,7 +246,7 @@ export const en = {
     whatsapp: "WhatsApp",
     email: "Email",
     address: "Address",
-    addressValue: "Near LuLu Murab'aa, City Center, Al Ain, UAE",
+    addressValue: "Main Street, Al Masa Building, Al Ain, Abu Dhabi, UAE",
     workingHours: "Working Hours",
     workingHoursValue: "Every day: 9:30 AM - 11:00 PM",
     formTitle: "Send Us a Message",
@@ -332,7 +332,7 @@ export const en = {
     },
   },
   whatsapp: {
-    defaultMessage: "Hello Al Ain Properties, I'm interested in your services. Could you please assist me?",
+    defaultMessage: "Hello Abraj Trwada Real Estate, I'm interested in your services. Could you please assist me?",
   },
 }
 

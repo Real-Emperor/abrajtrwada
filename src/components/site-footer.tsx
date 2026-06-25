@@ -23,20 +23,22 @@ export function SiteFooter() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#c9a84c] to-[#1e3a8a]">
-                <Building2 className="h-6 w-6 text-white" />
-              </div>
+              <img
+                src={SITE_CONFIG.logoPath}
+                alt="Abraj Trwada Real Estate Logo"
+                className="h-12 w-12 rounded-lg object-cover ring-2 ring-[#c9a84c]/30"
+              />
               <div>
-                <div className="text-lg font-bold">
+                <div className="text-base font-bold">
                   {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}
                 </div>
-                <div className="text-xs text-white/60">{t("common.brandTagline")}</div>
+                <div className="text-[11px] text-white/60">{t("common.brandTagline")}</div>
               </div>
             </div>
             <p className="text-sm text-white/70 leading-relaxed">
               {locale === "ar"
-                ? "وكالتك العقارية الموثوقة في العين. نربطك بالعقارات التي تناسب نمط حياتك."
-                : "Your trusted real estate agency in Al Ain. We connect you with properties that match your lifestyle."}
+                ? "شركتك العقارية الموثوقة في العين. نقدم خدمات الإدارة والإيجار والوساطة والاستثمار العقاري."
+                : "Your trusted real estate partner in Al Ain. We offer lease & management, brokerage, and investment services."}
             </p>
             <div className="flex gap-2">
               {socials.map((s, i) => (
@@ -95,6 +97,18 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
+                <a href={`tel:${SITE_CONFIG.phone2}`} className="flex items-center gap-2 hover:text-[#c9a84c] transition-colors">
+                  <Phone className="h-4 w-4 text-[#c9a84c] flex-shrink-0" />
+                  <span dir="ltr">{SITE_CONFIG.phone2Display}</span>
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${SITE_CONFIG.phone3}`} className="flex items-center gap-2 hover:text-[#c9a84c] transition-colors">
+                  <Phone className="h-4 w-4 text-[#c9a84c] flex-shrink-0" />
+                  <span dir="ltr">{SITE_CONFIG.phone3Display}</span>
+                </a>
+              </li>
+              <li>
                 <a href={`mailto:${SITE_CONFIG.email}`} className="flex items-center gap-2 hover:text-[#c9a84c] transition-colors break-all">
                   <Mail className="h-4 w-4 text-[#c9a84c] flex-shrink-0" />
                   <span className="text-xs">{SITE_CONFIG.email}</span>
@@ -113,9 +127,24 @@ export function SiteFooter() {
           <p className="text-xs text-white/60 text-center md:text-start">
             © {year} {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}. {t("common.footer.rightsReserved")}.
           </p>
-          <div className="flex gap-4 text-xs text-white/60">
-            <a href="#" className="hover:text-[#c9a84c] transition-colors">{t("common.footer.privacyPolicy")}</a>
-            <a href="#" className="hover:text-[#c9a84c] transition-colors">{t("common.footer.termsOfService")}</a>
+          <div className="flex flex-col md:flex-row items-center gap-3">
+            <a
+              href="https://phronesis-studio.com/en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-white/60 hover:text-[#c9a84c] transition-colors group"
+            >
+              <span className="font-serif italic text-[#c9a84c] text-base leading-none">Φ</span>
+              <span>
+                {locale === "ar"
+                  ? "تم تصميم وتطوير هذا الموقع بواسطة Phronesis Studio"
+                  : "Website crafted by Phronesis Studio"}
+              </span>
+            </a>
+            <div className="flex gap-4 text-xs text-white/60">
+              <a href="#" className="hover:text-[#c9a84c] transition-colors">{t("common.footer.privacyPolicy")}</a>
+              <a href="#" className="hover:text-[#c9a84c] transition-colors">{t("common.footer.termsOfService")}</a>
+            </div>
           </div>
         </div>
       </div>

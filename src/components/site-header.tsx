@@ -56,19 +56,20 @@ export function SiteHeader() {
           <button
             onClick={() => scrollToId("home")}
             className="flex items-center gap-2 group"
-            aria-label="Al Ain Properties — Home"
+            aria-label="Abraj Trwada Real Estate — Home"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#c9a84c] to-[#1e3a8a] rounded-lg blur-sm opacity-60 group-hover:opacity-100 transition-opacity" />
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#c9a84c] to-[#1e3a8a] text-white">
-                <Building2 className="h-6 w-6" />
-              </div>
+              <img
+                src={SITE_CONFIG.logoPath}
+                alt="Abraj Trwada Real Estate Logo"
+                className="relative h-11 w-11 md:h-12 md:w-12 rounded-lg object-cover ring-2 ring-[#c9a84c]/30 group-hover:ring-[#c9a84c] transition-all"
+              />
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="text-lg md:text-xl font-bold text-foreground">
+              <span className="text-base md:text-lg font-bold text-foreground">
                 {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}
               </span>
-              <span className="text-[10px] md:text-xs text-muted-foreground hidden sm:block">
+              <span className="text-[9px] md:text-[11px] text-muted-foreground hidden sm:block">
                 {t("common.brandTagline")}
               </span>
             </div>

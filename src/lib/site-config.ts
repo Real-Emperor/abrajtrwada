@@ -3,23 +3,31 @@
 
 export const SITE_CONFIG = {
   brandName: {
-    en: "Al Ain Properties",
-    ar: "العين العقارية",
+    en: "Abraj Trwada Real Estate",
+    ar: "أبراج ترادا العقارية",
   },
-  // Phone & WhatsApp (UAE format)
-  phone: "+971542311225",
-  phoneDisplay: "+971 54 231 1225",
-  // Phone without + for tel: links
-  phoneTel: "+971542311225",
+  brandFullName: {
+    en: "Abraj Trwada Real Estate - L.L.C.",
+    ar: "أبراج ترادا العقارية والاستثمارية ذ.م.م",
+  },
+  // Phone & WhatsApp (UAE format) — primary number
+  phone: "+971504870520",
+  phoneDisplay: "+971 50 487 0520",
+  phoneTel: "+971504870520",
   // WhatsApp number (digits only, with country code)
-  whatsapp: "971542311225",
-  whatsappDisplay: "+971 54 231 1225",
+  whatsapp: "971504870520",
+  whatsappDisplay: "+971 50 487 0520",
+  // Additional phone numbers
+  phone2: "+971509484829",
+  phone2Display: "+971 50 948 4829",
+  phone3: "+971509484854",
+  phone3Display: "+971 50 948 4854",
 
-  email: "mohammadmosaaliali@gmail.com",
+  email: "uhtower11@gmail.com",
 
   address: {
-    en: "Near LuLu Murab'aa, City Center, Al Ain, UAE",
-    ar: "بالقرب من لولو مربعة، وسط المدينة، العين، الإمارات",
+    en: "Main Street, Al Masa Building, Al Ain, Abu Dhabi, UAE",
+    ar: "الشارع الرئيسي، مبنى الماسة، العين، أبو ظبي، الإمارات العربية المتحدة",
   },
 
   // Al Ain coordinates (approximate city center)
@@ -28,13 +36,30 @@ export const SITE_CONFIG = {
     lng: 55.7447,
   },
 
-  domain: "alainproperties.com",
-  domainUrl: "https://alainproperties.com",
+  domain: "abrajtrwada.ae",
+  domainUrl: "https://abrajtrwada.ae",
 
   workingHours: {
     en: "Every day: 9:30 AM - 11:00 PM",
     ar: "كل يوم: 9:30 ص - 11:00 م",
   },
+
+  // Services offered
+  services: {
+    en: [
+      "Real Estate Lease And Management Services",
+      "Real Estate Purchase and Sale Brokerage",
+      "Real Estate Enterprises Investment, Development, Institution and Management",
+    ],
+    ar: [
+      "خدمات إدارة وتأجير العقارات",
+      "وساطة بيع وشراء العقارات",
+      "استثمار وتطوير الشركات العقارية، المؤسسة والإدارة",
+    ],
+  },
+
+  // Logo path (in /public folder)
+  logoPath: "/abraj-trwada-logo.jpg",
 
   social: {
     facebook: "https://facebook.com",
