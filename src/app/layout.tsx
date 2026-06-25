@@ -13,26 +13,30 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_CONFIG.brandName.en} — Premium Real Estate in Al Ain, UAE`,
+    default: `${SITE_CONFIG.brandName.en} — Real Estate & Investment in Al Ain, UAE`,
     template: `%s | ${SITE_CONFIG.brandName.en}`,
   },
   description:
-    "Discover premium villas, apartments, shops, offices, warehouses, farms, and land for rent and sale in Al Ain, UAE. Bilingual Arabic-English property listings with WhatsApp instant contact.",
+    "Abraj Trwada Real Estate - L.L.C. offers premium villas, apartments, shops, offices, warehouses, farms, and land for rent and sale in Al Ain, UAE. Real estate lease, management, brokerage, and investment services. Bilingual Arabic-English with WhatsApp instant contact.",
   keywords: [
-    "Al Ain real estate",
-    "Al Ain properties",
+    "Abraj Trwada",
+    "Abraj Trwada Real Estate",
+    "أبراج ترادا العقارية",
+    "real estate Al Ain",
     "villas for rent Al Ain",
     "apartments for rent Al Ain",
     "property for sale Al Ain",
     "real estate UAE",
+    "property management Al Ain",
+    "real estate investment UAE",
     "عقارات العين",
     "فلل للإيجار العين",
     "شقق للإيجار العين",
   ],
   authors: [{ name: SITE_CONFIG.brandName.en }],
   openGraph: {
-    title: `${SITE_CONFIG.brandName.en} — Premium Real Estate in Al Ain, UAE`,
-    description: "Discover premium properties for rent and sale in Al Ain, UAE.",
+    title: `${SITE_CONFIG.brandName.en} — Real Estate & Investment in Al Ain, UAE`,
+    description: "Premium properties for rent and sale in Al Ain, UAE. Lease, management, brokerage, and investment services.",
     type: "website",
     locale: "en_US",
     alternateLocale: "ar_AE",
@@ -53,6 +57,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
+        {/* Favicon */}
+        <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
         {/* Leaflet CSS */}
         <link
           rel="stylesheet"
