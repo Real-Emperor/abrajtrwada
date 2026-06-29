@@ -121,7 +121,7 @@ export default function AdminPage() {
           <div className="mt-4 p-3 rounded-lg bg-muted/50 text-xs text-muted-foreground">
             <p className="font-semibold mb-1">{locale === "ar" ? "بيانات الدخول:" : "Admin credentials:"}</p>
             <p dir="ltr">Email: admin@abrajtrwada.ae</p>
-            <p dir="ltr">Password: AbrajTrwada@Admin2026!</p>
+            <p dir="ltr">Password: Abraj@Secure2026!Admin</p>
             <p className="mt-1 italic">
               {locale === "ar"
                 ? "(تم تدوير بيانات الدخول — تواصل معنا إذا نسيتها)"

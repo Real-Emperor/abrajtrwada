@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json().catch(() => ({}))
     const adminEmail = body.adminEmail || "admin@abrajtrwada.ae"
-    const adminPassword = body.adminPassword || "AbrajTrwada@Admin2026!"
+    const adminPassword = body.adminPassword || "Abraj@Secure2026!Admin"
 
     const results = {
       adminUser: false,
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
         data: {
           email: adminEmail,
           passwordHash,
-          name: "Abraj Trwada Admin",
+          name: "Platform Administrator",
           phone: "+971504870520",
         },
       })
