@@ -123,6 +123,24 @@ export default function AdminPage() {
     )
   }
 
+  return (
+    <div className="min-h-screen flex flex-col lg:flex-row bg-muted/20">
+      {/* Sidebar */}
+      <aside className="lg:w-64 bg-[#0a0f1e] text-white lg:min-h-screen p-4 lg:p-6">
+        <div className="flex items-center gap-2 mb-6">
+          <img
+            src={SITE_CONFIG.logoPath}
+            alt="Abraj Trwada Real Estate Logo"
+            className="h-10 w-10 rounded-lg object-cover ring-2 ring-[#c9a84c]/30"
+          />
+          <div>
+            <div className="text-sm font-bold">
+              {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}
+            </div>
+            <div className="text-xs text-white/60">{t("admin.dashboard.title")}</div>
+          </div>
+        </div>
+
         <nav className="space-y-1">
           {navItems.map(item => (
             <button
