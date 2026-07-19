@@ -118,7 +118,10 @@ export default function AdminPage() {
               ← {locale === "ar" ? "العودة للموقع" : "Back to website"}
             </a>
           </div>
-        </div>
+        </Card>
+      </div>
+    )
+  }
 
         <nav className="space-y-1">
           {navItems.map(item => (
