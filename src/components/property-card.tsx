@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 
 import { Bed, Bath, MapPin, Heart, GitCompare, Eye, Building, Maximize } from "lucide-react"
 import { Card } from "@/components/ui/card"
@@ -105,6 +106,7 @@ export function PropertyCard({ property, onClick }: { property: PropertyCardData
     : `Hello, I'm interested in this property: ${property.titleEn} (${formatPrice(property.price, "en")})`
 
   return (
+    <Link href={`/property/${property.slug}`} className="block">
     <Card
       className="overflow-hidden card-hover group relative flex flex-col h-full p-0 cursor-pointer"
       onClick={() => onClick?.(property)}
@@ -190,19 +192,11 @@ export function PropertyCard({ property, onClick }: { property: PropertyCardData
               <span className="text-muted-foreground hidden sm:inline">{t("property.bedrooms")}</span>
             </div>
           )}
-          {property.type === "building" ? (
-            <div className="flex items-center gap-1">
-              <Maximize className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
-              <span className="font-medium">{property.bathrooms}</span>
-              <span className="text-muted-foreground hidden sm:inline">{locale === "ar" ? "حمامات" : "Baths"}</span>
-            </div>
-          ) : (
-            <div className="flex items-center gap-1">
-              <Bath className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
-              <span className="font-medium">{property.bathrooms}</span>
-              <span className="text-muted-foreground hidden sm:inline">{t("property.bathrooms")}</span>
-            </div>
-          )}
+          <div className="flex items-center gap-1">
+            <Bath className="h-3.5 w-3.5 text-[#1e3a8a] dark:text-[#c9a84c]" />
+            <span className="font-medium">{property.bathrooms}</span>
+            <span className="text-muted-foreground hidden sm:inline">{t("property.bathrooms")}</span>
+          </div>
         </div>
 
         {/* Price + CTA */}
@@ -228,5 +222,6 @@ export function PropertyCard({ property, onClick }: { property: PropertyCardData
         </div>
       </div>
     </Card>
+    </Link>
   )
 }

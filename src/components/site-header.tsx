@@ -7,6 +7,7 @@ import { useI18n } from "@/i18n/provider"
 import { useTheme } from "next-themes"
 import { SITE_CONFIG, getTelLink } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 // Smooth scroll helper
 function scrollToId(id: string) {
@@ -32,13 +33,12 @@ export function SiteHeader() {
   }, [])
 
   const navItems = [
-    { id: "home", label: t("common.nav.home") },
-    { id: "search", label: t("common.nav.search") },
-    { id: "categories", label: t("common.nav.categories") },
-    { id: "areas", label: t("common.nav.areas") },
-    { id: "news", label: t("common.nav.news") },
-    { id: "about", label: t("common.nav.about") },
-    { id: "contact", label: t("common.nav.contact") },
+    { href: "/", label: t("common.nav.home") },
+    { href: "/properties", label: t("common.nav.search") },
+    { href: "/areas", label: t("common.nav.areas") },
+    { href: "/news", label: t("common.nav.news") },
+    { href: "/about", label: t("common.nav.about") },
+    { href: "/contact", label: t("common.nav.contact") },
   ]
 
   return (
@@ -56,20 +56,19 @@ export function SiteHeader() {
           <button
             onClick={() => scrollToId("home")}
             className="flex items-center gap-2 group"
-            aria-label="Abraj Trwada Real Estate — Home"
+            aria-label="Al Ain Real Estate — Home"
           >
             <div className="relative">
-              <img
-                src={SITE_CONFIG.logoPath}
-                alt="Abraj Trwada Real Estate Logo"
-                className="relative h-11 w-11 md:h-12 md:w-12 rounded-lg object-cover ring-2 ring-[#c9a84c]/30 group-hover:ring-[#c9a84c] transition-all"
-              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#c9a84c] to-[#1e3a8a] rounded-lg blur-sm opacity-60 group-hover:opacity-100 transition-opacity" />
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#c9a84c] to-[#1e3a8a] text-white">
+                <Building2 className="h-6 w-6" />
+              </div>
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="text-sm md:text-base font-bold text-foreground whitespace-nowrap">
+              <span className="text-lg md:text-xl font-bold text-foreground">
                 {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}
               </span>
-              <span className="text-[8px] md:text-[10px] text-muted-foreground hidden sm:block whitespace-nowrap">
+              <span className="text-[10px] md:text-xs text-muted-foreground hidden sm:block">
                 {t("common.brandTagline")}
               </span>
             </div>
@@ -78,13 +77,13 @@ export function SiteHeader() {
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map(item => (
-              <button
-                key={item.id}
-                onClick={() => scrollToId(item.id)}
+              <Link
+                key={item.href}
+                href={item.href}
                 className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground animated-underline transition-colors"
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -147,16 +146,14 @@ export function SiteHeader() {
         {mobileOpen && (
           <nav className="lg:hidden border-t border-border py-4 space-y-1">
             {navItems.map(item => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  scrollToId(item.id)
-                  setMobileOpen(false)
-                }}
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
                 className="block w-full text-start px-3 py-2.5 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted rounded-md transition-colors"
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
             <a href={getTelLink()} className="block px-3 pt-2">
               <Button variant="outline" className="w-full border-accent text-accent">

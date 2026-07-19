@@ -118,45 +118,6 @@ export default function AdminPage() {
               ← {locale === "ar" ? "العودة للموقع" : "Back to website"}
             </a>
           </div>
-          <div className="mt-4 p-3 rounded-lg bg-muted/50 text-xs text-muted-foreground">
-            <p className="font-semibold mb-1">{locale === "ar" ? "بيانات الدخول:" : "Admin credentials:"}</p>
-            <p dir="ltr">Email: admin@abrajtrwada.ae</p>
-            <p dir="ltr">Password: Abraj@Secure2026!Admin</p>
-            <p className="mt-1 italic">
-              {locale === "ar"
-                ? "(تم تدوير بيانات الدخول — تواصل معنا إذا نسيتها)"
-                : "(Credentials have been rotated — contact us if forgotten)"}
-            </p>
-          </div>
-        </Card>
-      </div>
-    )
-  }
-
-  const navItems: { value: AdminView; icon: any; label: string }[] = [
-    { value: "overview", icon: LayoutDashboard, label: t("admin.dashboard.overview") },
-    { value: "properties", icon: Building, label: t("admin.dashboard.properties") },
-    { value: "inquiries", icon: MessageSquare, label: t("admin.dashboard.inquiries") },
-    { value: "viewings", icon: Calendar, label: t("admin.dashboard.viewings") },
-    { value: "news", icon: Newspaper, label: t("admin.dashboard.news") },
-  ]
-
-  return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-muted/20">
-      {/* Sidebar */}
-      <aside className="lg:w-64 bg-[#0a0f1e] text-white lg:min-h-screen p-4 lg:p-6">
-        <div className="flex items-center gap-2 mb-6">
-          <img
-            src={SITE_CONFIG.logoPath}
-            alt="Abraj Trwada Real Estate Logo"
-            className="h-10 w-10 rounded-lg object-cover ring-2 ring-[#c9a84c]/30"
-          />
-          <div>
-            <div className="text-sm font-bold">
-              {locale === "ar" ? SITE_CONFIG.brandName.ar : SITE_CONFIG.brandName.en}
-            </div>
-            <div className="text-xs text-white/60">{t("admin.dashboard.title")}</div>
-          </div>
         </div>
 
         <nav className="space-y-1">
