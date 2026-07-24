@@ -118,7 +118,7 @@ export function DemoDisclaimerPopup() {
             <span>صُنع بإتقان بواسطة استوديو فرونيسس · Crafted with precision by Studio of Phronesis</span>
           </div>
 
-          {/* Agree buttons — both languages */}
+          {/* Agree buttons - both languages */}
           <div className="grid grid-cols-2 gap-3">
             <Button
               onClick={handleAgree}

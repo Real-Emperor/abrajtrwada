@@ -2,7 +2,7 @@
 export const en = {
   common: {
     brandName: "Abraj Trwada Real Estate",
-    brandTagline: "Real Estate & Investment — Al Ain, UAE",
+    brandTagline: "Real Estate & Investment, Al Ain, UAE",
     nav: {
       home: "Home",
       search: "Search",
@@ -43,7 +43,7 @@ export const en = {
   },
   home: {
     heroTitle: "Find Your Dream Property in Al Ain",
-    heroSubtitle: "Discover premium villas, apartments, shops, offices, and land with Abraj Trwada Real Estate — your trusted partner in Al Ain, UAE",
+    heroSubtitle: "Discover premium villas, apartments, shops, offices, and land with Abraj Trwada Real Estate, your trusted partner in Al Ain, UAE",
     heroCta: "Start Your Search",
     heroSecondaryCta: "Browse Properties",
     searchTitle: "Advanced Property Search",
@@ -212,7 +212,7 @@ export const en = {
     storyTitle: "Our Story",
     storyContent: "Abraj Trwada Real Estate - L.L.C. is a UAE-based real estate company headquartered in Al Ain, Abu Dhabi. Founded with a commitment to transparent, professional, and personalized service, we have built our reputation on three core pillars: property rental and management, real estate brokerage for buying and selling, and investment in property development projects. Our team brings deep local expertise across every neighborhood of Al Ain, and we pride ourselves on connecting families, investors, and businesses with properties that match their needs and aspirations. From our office on Main Street, Al Masa Building, we serve clients across the entire Al Ain region and beyond.",
     missionTitle: "Our Mission",
-    missionContent: "To deliver exceptional real estate services across three pillars — property rental & management, brokerage for buying & selling, and investment & project development — with transparency, expertise, and a commitment to long-term client relationships.",
+    missionContent: "To deliver exceptional real estate services across three pillars: property rental & management, brokerage for buying & selling, and investment & project development, with transparency, expertise, and a commitment to long-term client relationships.",
     whyChooseUs: "Why Choose Us",
     features: {
       localExpertise: {

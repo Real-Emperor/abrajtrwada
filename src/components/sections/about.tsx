@@ -31,7 +31,7 @@ export function AboutSection() {
     <section id="about" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left — story + mission */}
+          {/* Left - story + mission */}
           <div>
             <SectionHeader
               title={t("about.title")}
@@ -66,7 +66,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Right — image collage + stats */}
+          {/* Right - image collage + stats */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-3">

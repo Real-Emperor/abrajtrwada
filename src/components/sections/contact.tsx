@@ -85,7 +85,7 @@ export function ContactSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
-          {/* Left — contact info */}
+          {/* Left - contact info */}
           <div className="space-y-4">
             {contactInfo.map((info, i) => (
               <a
@@ -122,7 +122,7 @@ export function ContactSection() {
             </Card>
           </div>
 
-          {/* Right — form */}
+          {/* Right - form */}
           <Card className="p-6 md:p-8">
             <h3 className="text-xl font-bold mb-6">{t("contact.formTitle")}</h3>
             <form onSubmit={handleSubmit} className="space-y-4">

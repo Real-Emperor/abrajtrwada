@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_CONFIG.brandName.en} — Real Estate & Investment in Al Ain, UAE`,
+    default: `${SITE_CONFIG.brandName.en} - Real Estate & Investment in Al Ain, UAE`,
     template: `%s | ${SITE_CONFIG.brandName.en}`,
   },
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: SITE_CONFIG.brandName.en }],
   openGraph: {
-    title: `${SITE_CONFIG.brandName.en} — Real Estate & Investment in Al Ain, UAE`,
+    title: `${SITE_CONFIG.brandName.en} - Real Estate & Investment in Al Ain, UAE`,
     description: "Premium properties for rent and sale in Al Ain, UAE. Lease, management, brokerage, and investment services.",
     type: "website",
     locale: "en_US",

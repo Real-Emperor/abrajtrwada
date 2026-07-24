@@ -1,4 +1,4 @@
-// Central site configuration — all contact info, areas, property types
+// Central site configuration - all contact info, areas, property types
 // This is the single source of truth for business-critical data.
 
 export const SITE_CONFIG = {
@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
     en: "Abraj Trwada Real Estate - L.L.C.",
     ar: "أبراج طروادة العقارية والاستثمارية ذ.م.م",
   },
-  // Phone & WhatsApp (UAE format) — primary number
+  // Phone & WhatsApp (UAE format) - primary number
   phone: "+971504870520",
   phoneDisplay: "+971 50 487 0520",
   phoneTel: "+971504870520",
