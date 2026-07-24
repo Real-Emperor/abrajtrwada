@@ -3,46 +3,17 @@
 import { Building2, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Linkedin, Youtube } from "lucide-react"
 import { useI18n } from "@/i18n/provider"
 import { SITE_CONFIG, getTelLink, getWhatsAppLink, AL_AIN_AREAS, PROPERTY_CATEGORIES } from "@/lib/site-config"
-import { useState, useEffect } from "react"
-
-interface FooterArea {
-  value: string
-  labelEn: string
-  labelAr: string
-}
+import { useAreas } from "@/hooks/use-areas"
 
 export function SiteFooter() {
   const { t, locale } = useI18n()
   const year = new Date().getFullYear()
-  const [areas, setAreas] = useState<FooterArea[]>([])
+  const apiAreas = useAreas()
 
-  useEffect(() => {
-    fetch("/api/areas")
-      .then(r => r.json())
-      .then(data => {
-        if (data.areas && data.areas.length > 0) {
-          setAreas(data.areas.map((a: any) => ({
-            value: a.value,
-            labelEn: a.labelEn,
-            labelAr: a.labelAr,
-          })))
-        } else {
-          // Fallback to built-in areas
-          setAreas(AL_AIN_AREAS.map(a => ({
-            value: a.value,
-            labelEn: a.labelEn,
-            labelAr: a.labelAr,
-          })))
-        }
-      })
-      .catch(() => {
-        setAreas(AL_AIN_AREAS.map(a => ({
-          value: a.value,
-          labelEn: a.labelEn,
-          labelAr: a.labelAr,
-        })))
-      })
-  }, [])
+  // Use API areas if available, otherwise fall back to built-in list
+  const areas = apiAreas.length > 0
+    ? apiAreas
+    : AL_AIN_AREAS.map(a => ({ value: a.value, labelEn: a.labelEn, labelAr: a.labelAr, coverImage: null, isCustom: false }))
 
   // Sort areas by current locale
   const sortedAreas = [...areas].sort((a, b) => {
@@ -159,7 +130,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-xs text-white/60 hover:text-[#c9a84c] transition-colors group"
-              title="Phronesis Studio — Studio of Practical Wisdom"
+              title="Phronesis Studio, Studio of Practical Wisdom"
             >
               <img
                 src="/phronesis-logo.png"
