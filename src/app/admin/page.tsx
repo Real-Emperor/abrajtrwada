@@ -7,15 +7,16 @@ import { Label } from "@/components/ui/label"
 import { Card } from "@/components/ui/card"
 import { useI18n } from "@/i18n/provider"
 import { SITE_CONFIG } from "@/lib/site-config"
-import { Building2, LogOut, LayoutDashboard, Building, MessageSquare, Calendar, Newspaper, Lock } from "lucide-react"
+import { Building2, LogOut, LayoutDashboard, Building, MessageSquare, Calendar, Newspaper, Lock, MapPin, Loader2 } from "lucide-react"
 import { AdminOverview } from "@/components/admin/overview"
 import { AdminProperties } from "@/components/admin/properties"
 import { AdminInquiries } from "@/components/admin/inquiries"
 import { AdminViewings } from "@/components/admin/viewings"
 import { AdminNews } from "@/components/admin/news"
+import { AdminAreas } from "@/components/admin/areas"
 import { toast } from "sonner"
 
-type AdminView = "overview" | "properties" | "inquiries" | "viewings" | "news"
+type AdminView = "overview" | "properties" | "inquiries" | "viewings" | "news" | "areas"
 
 export default function AdminPage() {
   const { t, locale } = useI18n()
@@ -24,6 +25,7 @@ export default function AdminPage() {
   const [view, setView] = useState<AdminView>("overview")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
     const token = typeof window !== "undefined" ? localStorage.getItem("admin_token") : null
@@ -33,6 +35,8 @@ export default function AdminPage() {
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (submitting) return // prevent double-clicks
+    setSubmitting(true)
     try {
       const res = await fetch("/api/admin/login", {
         method: "POST",
@@ -50,6 +54,8 @@ export default function AdminPage() {
       }
     } catch {
       toast.error(locale === "ar" ? "فشل تسجيل الدخول" : "Login failed")
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -108,9 +114,22 @@ export default function AdminPage() {
                 dir="ltr"
               />
             </div>
-            <Button type="submit" className="w-full bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 dark:bg-[#c9a84c] dark:hover:bg-[#c9a84c]/90 dark:text-[#0a0f1e]">
-              <Lock className="h-4 w-4 me-2" />
-              {t("admin.login.signIn")}
+            <Button
+              type="submit"
+              className="w-full bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 dark:bg-[#c9a84c] dark:hover:bg-[#c9a84c]/90 dark:text-[#0a0f1e]"
+              disabled={submitting || !email || !password}
+            >
+              {submitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 me-2 animate-spin" />
+                  {locale === "ar" ? "جاري التحقق..." : "Signing in..."}
+                </>
+              ) : (
+                <>
+                  <Lock className="h-4 w-4 me-2" />
+                  {t("admin.login.signIn")}
+                </>
+              )}
             </Button>
           </form>
           <div className="mt-6 text-center">
@@ -122,6 +141,15 @@ export default function AdminPage() {
       </div>
     )
   }
+
+  const navItems: { value: AdminView; icon: any; label: string }[] = [
+    { value: "overview", icon: LayoutDashboard, label: t("admin.dashboard.overview") },
+    { value: "properties", icon: Building, label: t("admin.dashboard.properties") },
+    { value: "inquiries", icon: MessageSquare, label: t("admin.dashboard.inquiries") },
+    { value: "viewings", icon: Calendar, label: t("admin.dashboard.viewings") },
+    { value: "news", icon: Newspaper, label: t("admin.dashboard.news") },
+    { value: "areas", icon: MapPin, label: locale === "ar" ? "صور المناطق" : "Area Photos" },
+  ]
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-muted/20">
@@ -179,6 +207,7 @@ export default function AdminPage() {
         {view === "inquiries" && <AdminInquiries />}
         {view === "viewings" && <AdminViewings />}
         {view === "news" && <AdminNews />}
+        {view === "areas" && <AdminAreas />}
       </main>
     </div>
   )

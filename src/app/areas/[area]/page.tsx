@@ -21,8 +21,29 @@ export default function AreaPage() {
   const [loading, setLoading] = useState(true)
   const [filterType, setFilterType] = useState("all")
   const [filterListing, setFilterListing] = useState("all")
+  const [areaInfo, setAreaInfo] = useState<{ labelEn: string; labelAr: string } | null>(null)
+  const [areaNotFound, setAreaNotFound] = useState(false)
 
-  const area = AL_AIN_AREAS.find(a => a.value === areaValue)
+  // Look up the area — first in built-in list, then via API (for custom areas)
+  useEffect(() => {
+    const builtIn = AL_AIN_AREAS.find(a => a.value === areaValue)
+    if (builtIn) {
+      setAreaInfo({ labelEn: builtIn.labelEn, labelAr: builtIn.labelAr })
+      return
+    }
+    // Not a built-in area — check via API for custom area
+    fetch("/api/areas")
+      .then(r => r.json())
+      .then(data => {
+        const found = (data.areas || []).find((a: any) => a.value === areaValue)
+        if (found) {
+          setAreaInfo({ labelEn: found.labelEn, labelAr: found.labelAr })
+        } else {
+          setAreaNotFound(true)
+        }
+      })
+      .catch(() => setAreaNotFound(true))
+  }, [areaValue])
 
   useEffect(() => {
     fetch(`/api/properties?area=${areaValue}`)
@@ -50,12 +71,12 @@ export default function AreaPage() {
     )
   }
 
-  if (!area) {
+  if (areaNotFound || !areaInfo) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-2xl font-bold mb-4">Area not found</h1>
-          <Link href="/areas"><Button>Browse all areas</Button></Link>
+          <h1 className="text-2xl font-bold mb-4">{locale === "ar" ? "المنطقة غير موجودة" : "Area not found"}</h1>
+          <Link href="/areas"><Button>{locale === "ar" ? "تصفح جميع المناطق" : "Browse all areas"}</Button></Link>
         </div>
       </PageLayout>
     )
@@ -74,13 +95,13 @@ export default function AreaPage() {
         <div className="flex items-center gap-3 mb-2">
           <MapPin className="h-8 w-8 text-[#c9a84c]" />
           <h1 className="text-3xl md:text-4xl font-bold">
-            {locale === "ar" ? area.labelAr : area.labelEn}
+            {locale === "ar" ? areaInfo.labelAr : areaInfo.labelEn}
           </h1>
         </div>
         <p className="text-muted-foreground mb-6">
           {locale === "ar"
-            ? `${filtered.length} عقار متاح في ${area.labelAr}، العين`
-            : `${filtered.length} properties available in ${area.labelEn}, Al Ain`}
+            ? `${filtered.length} عقار متاح في ${areaInfo.labelAr}، العين`
+            : `${filtered.length} properties available in ${areaInfo.labelEn}, Al Ain`}
         </p>
 
         {/* Filters */}

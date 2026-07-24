@@ -8,11 +8,17 @@ import { SectionHeader } from "./section-header"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
+interface PublicArea {
+  value: string
+  labelEn: string
+  labelAr: string
+  coverImage: string | null
+  isCustom: boolean
+}
+
 export function PopularAreas({ propertyCounts }: { propertyCounts: Record<string, number> }) {
   const { t, locale } = useI18n()
-  const [areaData, setAreaData] = useState<{
-    areas: Array<{ value: string; labelEn: string; labelAr: string; coverImage: string | null }>
-  }>({ areas: [] })
+  const [areaData, setAreaData] = useState<{ areas: PublicArea[] }>({ areas: [] })
 
   useEffect(() => {
     fetch("/api/areas")
@@ -23,10 +29,16 @@ export function PopularAreas({ propertyCounts }: { propertyCounts: Record<string
       .catch(() => {})
   }, [])
 
-  // Use API areas if available, otherwise fall back to built-in
+  // Use API areas if available, otherwise fall back to built-in list
   const displayAreas = areaData.areas.length > 0
     ? areaData.areas
-    : AL_AIN_AREAS.map(a => ({ value: a.value, labelEn: a.labelEn, labelAr: a.labelAr, coverImage: null }))
+    : AL_AIN_AREAS.map(a => ({
+        value: a.value,
+        labelEn: a.labelEn,
+        labelAr: a.labelAr,
+        coverImage: null,
+        isCustom: false,
+      }))
 
   // Sort by current locale
   const sortedAreas = [...displayAreas].sort((a, b) => {
