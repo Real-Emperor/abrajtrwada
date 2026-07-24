@@ -40,7 +40,6 @@ export default function PropertiesPage() {
             labelAr: a.labelAr,
           })))
         } else {
-          // Fallback to built-in areas
           setAreas(AL_AIN_AREAS.map(a => ({
             value: a.value,
             labelEn: a.labelEn,

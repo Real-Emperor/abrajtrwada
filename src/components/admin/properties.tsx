@@ -21,6 +21,7 @@ export function AdminProperties() {
   const [loading, setLoading] = useState(true)
   const [editing, setEditing] = useState<any | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [areas, setAreas] = useState<Array<{ value: string; labelEn: string; labelAr: string }>>([])
 
   const fetchProperties = async () => {
     const token = localStorage.getItem("admin_token")
@@ -34,7 +35,43 @@ export function AdminProperties() {
     setLoading(false)
   }
 
-  useEffect(() => { fetchProperties() }, [])
+  // Fetch all visible areas (built-in + custom, excluding hidden) for the area dropdown
+  const fetchAreas = async () => {
+    try {
+      const res = await fetch("/api/areas")
+      const data = await res.json()
+      if (data.areas && data.areas.length > 0) {
+        setAreas(data.areas.map((a: any) => ({
+          value: a.value,
+          labelEn: a.labelEn,
+          labelAr: a.labelAr,
+        })))
+      } else {
+        setAreas(AL_AIN_AREAS.map(a => ({
+          value: a.value,
+          labelEn: a.labelEn,
+          labelAr: a.labelAr,
+        })))
+      }
+    } catch {
+      setAreas(AL_AIN_AREAS.map(a => ({
+        value: a.value,
+        labelEn: a.labelEn,
+        labelAr: a.labelAr,
+      })))
+    }
+  }
+
+  useEffect(() => {
+    fetchProperties()
+    fetchAreas()
+  }, [])
+
+  // Sort areas by current locale
+  const sortedAreas = [...areas].sort((a, b) => {
+    if (locale === "ar") return a.labelAr.localeCompare(b.labelAr, "ar")
+    return a.labelEn.localeCompare(b.labelEn)
+  })
 
   const openNew = () => {
     setEditing({
@@ -54,54 +91,28 @@ export function AdminProperties() {
   }
 
   // Parse Google Maps URL to extract latitude and longitude
-  // Supports formats:
-  // - https://www.google.com/maps/place/.../@24.2075,55.7447,17z/...
-  // - https://maps.google.com/?ll=24.2075,55.7447
-  // - https://www.google.com/maps/search/?api=1&query=24.2075,55.7447
-  // - https://www.google.com/maps?q=24.2075,55.7447
   const parseMapsUrl = (url: string) => {
     if (!url) return
     let lat = "", lng = ""
-
-    // Try @lat,lng format (most common in place URLs)
     const atMatch = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)
-    if (atMatch) {
-      lat = atMatch[1]
-      lng = atMatch[2]
-    }
-
-    // Try ?ll=lat,lng format
+    if (atMatch) { lat = atMatch[1]; lng = atMatch[2] }
     if (!lat) {
       const llMatch = url.match(/[?&]ll=(-?\d+\.\d+),(-?\d+\.\d+)/)
-      if (llMatch) {
-        lat = llMatch[1]
-        lng = llMatch[2]
-      }
+      if (llMatch) { lat = llMatch[1]; lng = llMatch[2] }
     }
-
-    // Try ?query=lat,lng or ?q=lat,lng format
     if (!lat) {
       const queryMatch = url.match(/[?&](?:query|q)=(-?\d+\.\d+),(-?\d+\.\d+)/)
-      if (queryMatch) {
-        lat = queryMatch[1]
-        lng = queryMatch[2]
-      }
+      if (queryMatch) { lat = queryMatch[1]; lng = queryMatch[2] }
     }
-
-    // Try !3dlat!4dlng format (new Google Maps URLs)
     if (!lat) {
       const dMatch = url.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)
-      if (dMatch) {
-        lat = dMatch[1]
-        lng = dMatch[2]
-      }
+      if (dMatch) { lat = dMatch[1]; lng = dMatch[2] }
     }
-
     if (lat && lng) {
       setEditing((prev: any) => ({ ...prev, latitude: lat, longitude: lng }))
       toast.success(locale === "ar" ? `تم استخراج الموقع: ${lat}, ${lng}` : `Location extracted: ${lat}, ${lng}`)
     } else if (url.length > 10) {
-      toast.error(locale === "ar" ? "تعذر استخراج الموقع من الرابط. أدخل الإحداثيات يدوياً." : "Could not extract location from URL. Please enter coordinates manually.")
+      toast.error(locale === "ar" ? "تعذر استخراج الموقع من الرابط" : "Could not extract location from URL")
     }
   }
 
@@ -200,7 +211,8 @@ export function AdminProperties() {
       {/* Properties list */}
       <div className="space-y-2">
         {properties.map(p => {
-          const area = getAreaByValue(p.area)
+          // Look up area in fetched areas list first (includes custom areas), then fall back to built-in
+          const area = areas.find(a => a.value === p.area) || getAreaByValue(p.area)
           const type = getTypeByValue(p.type)
           const photos = (() => { try { return JSON.parse(p.photos || "[]") } catch { return [] } })()
           return (
@@ -296,7 +308,7 @@ export function AdminProperties() {
                 <Select value={editing.area} onValueChange={v => setEditing({ ...editing, area: v })}>
                   <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    {AL_AIN_AREAS.map(a => (
+                    {sortedAreas.map(a => (
                       <SelectItem key={a.value} value={a.value}>{locale === "ar" ? a.labelAr : a.labelEn}</SelectItem>
                     ))}
                   </SelectContent>
@@ -306,7 +318,7 @@ export function AdminProperties() {
                 <Label>{t("admin.property.price")} (AED) *</Label>
                 <Input type="number" value={editing.price} onChange={e => setEditing({ ...editing, price: e.target.value })} className="mt-1" dir="ltr" />
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 <div>
                   <Label>{t("admin.property.bedrooms")}</Label>
                   <Input type="number" value={editing.bedrooms} onChange={e => setEditing({ ...editing, bedrooms: e.target.value })} className="mt-1" dir="ltr" />
@@ -332,7 +344,6 @@ export function AdminProperties() {
                     onChange={e => {
                       const url = e.target.value
                       setEditing({ ...editing, mapsUrl: url })
-                      // Try to parse coordinates from the URL
                       parseMapsUrl(url)
                     }}
                     className="text-xs"

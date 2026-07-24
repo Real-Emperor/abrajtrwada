@@ -18,17 +18,23 @@ export default function AreaPage() {
   const areaValue = params.area as string
   const { t, locale } = useI18n()
   const [properties, setProperties] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
+  const [propertiesLoading, setPropertiesLoading] = useState(true)
+  const [areaLoading, setAreaLoading] = useState(true)
   const [filterType, setFilterType] = useState("all")
   const [filterListing, setFilterListing] = useState("all")
   const [areaInfo, setAreaInfo] = useState<{ labelEn: string; labelAr: string } | null>(null)
   const [areaNotFound, setAreaNotFound] = useState(false)
 
-  // Look up the area — first in built-in list, then via API (for custom areas)
+  // Look up the area — first in built-in list (instant), then via API (for custom areas)
   useEffect(() => {
+    setAreaLoading(true)
+    setAreaNotFound(false)
+    setAreaInfo(null)
+
     const builtIn = AL_AIN_AREAS.find(a => a.value === areaValue)
     if (builtIn) {
       setAreaInfo({ labelEn: builtIn.labelEn, labelAr: builtIn.labelAr })
+      setAreaLoading(false)
       return
     }
     // Not a built-in area — check via API for custom area
@@ -43,16 +49,18 @@ export default function AreaPage() {
         }
       })
       .catch(() => setAreaNotFound(true))
+      .finally(() => setAreaLoading(false))
   }, [areaValue])
 
   useEffect(() => {
+    setPropertiesLoading(true)
     fetch(`/api/properties?area=${areaValue}`)
       .then(r => r.json())
       .then(data => {
         setProperties(data.properties || [])
-        setLoading(false)
+        setPropertiesLoading(false)
       })
-      .catch(() => setLoading(false))
+      .catch(() => setPropertiesLoading(false))
   }, [areaValue])
 
   const filtered = properties.filter(p => {
@@ -60,6 +68,8 @@ export default function AreaPage() {
     if (filterListing !== "all" && p.listingType !== filterListing) return false
     return true
   })
+
+  const loading = areaLoading || propertiesLoading
 
   if (loading) {
     return (
